@@ -1,4 +1,71 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@use "@angular/material" as mat;
+
+// Styling for material toolbar
+.toolbar {
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: var(--mat-sys-primary),
+      container-text-color: var(--mat-sys-on-primary),
+    )
+  );
+}
+
+// Styling for exit ('X') icons from dialogs
+.exit-icon {
+  @include mat.icon-button-overrides(
+    (
+      icon-color: var(--mat-sys-error),
+    )
+  );
+}
+
+// Primary button class to provide overrides for mat buttons
+.primary-button {
+  @include mat.button-overrides(
+    (
+      protected-container-color: var(--mat-sys-primary),
+      protected-label-text-color: var(--mat-sys-on-primary),
+    )
+  );
+}
+
+// Secondary button class to provide overrides for mat buttons
+.secondary-button {
+  @include mat.button-overrides(
+    (
+      protected-container-color: var(--mat-sys-secondary),
+      protected-label-text-color: var(--mat-sys-on-primary),
+    )
+  );
+}
+
+// Warn button class to provide overrides for mat buttons
+.warn-button {
+  @include mat.button-overrides(
+    (
+      protected-container-color: var(--mat-sys-error),
+      protected-label-text-color: var(--mat-sys-on-primary),
+    )
+  );
+}
+
+.side-navigation {
+  @include mat.sidenav-overrides(
+    (
+      container-width: auto,
+      container-shape: 0px,
+      container-divider-color: var(--mat-sys-outline),
+    )
+  );
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
