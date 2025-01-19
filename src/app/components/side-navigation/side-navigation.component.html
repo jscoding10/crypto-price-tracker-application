@@ -1,1 +1,67 @@
-<p>side-navigation works!</p>
+<mat-drawer-container class="container" autosize>
+  <mat-drawer class="side-navigation" mode="side" opened>
+    <mat-nav-list class="navigation">
+      @for (option of sideNavOption; track option.title) {
+      <mat-list-item
+        [class.open-nav]="!openedNav"
+        [routerLink]="option.url"
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [matTooltip]="option.title"
+        matTooltipPosition="right"
+        [matTooltipDisabled]="openedNav"
+      >
+        <mat-icon matListItemIcon fontSet="material-symbols-outlined">
+          {{ option.icon }}
+        </mat-icon>
+        <span matListItemTitle [style.view-transition-name]="'menu'">
+          {{ option.title }}
+        </span>
+      </mat-list-item>
+      }
+      <span class="spacer"></span>
+      <!-- Make a component for light and dark mode -->
+      <mat-divider></mat-divider>
+      @for (item of toggleTheme; track item.title) {
+      <mat-list-item
+        [matMenuTriggerFor]="themeMenu"
+        [class.open-nav]="!openedNav"
+        [routerLinkActive]="['active']"
+        [matTooltip]="item.title"
+        matTooltipPosition="right"
+        [matTooltipDisabled]="openedNav"
+      >
+        <mat-icon matListItemIcon fontSet="material-symbols-outlined">
+          {{ item.icon }}
+        </mat-icon>
+        <span matListItemTitle [style.view-transition-name]="'menu'">
+          {{ item.title }}
+        </span>
+        <!-- <span class="spacer"></span> -->
+      </mat-list-item>
+      <mat-menu #themeMenu="matMenu" xPosition="after">
+        <button mat-menu-item (click)="operatingSystemThemeSelect()">OS</button>
+        <button mat-menu-item (click)="lightThemeSelect()">Light Mode</button>
+        <button mat-menu-item (click)="darkThemeSelect()">Dark Mode</button>
+      </mat-menu>
+      }
+      <mat-divider></mat-divider>
+      <mat-list-item
+        matTooltip="Open Menu"
+        matTooltipPosition="right"
+        [matTooltipDisabled]="openedNav"
+        class="close-navigation"
+        [class.open-nav]="!openedNav"
+        (click)="openedNav = !openedNav"
+      >
+        <mat-icon matListItemIcon fontSet="material-symbols-outlined">
+          @if (openedNav) { left_panel_close } @else { left_panel_open }
+        </mat-icon>
+        <span matListItemTitle>Close</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet />
+  </mat-drawer-content>
+</mat-drawer-container>
