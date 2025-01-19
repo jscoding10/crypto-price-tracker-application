@@ -1,1 +1,59 @@
-<p>update-portfolio-item works!</p>
+<div>
+  <div class="title-wrapper">
+    <h1>Update Cryptocurrency</h1>
+  </div>
+  <div>
+    <form [formGroup]="updateCryptoForm" (ngSubmit)="onSubmit()">
+      <div class="input">
+        <mat-form-field>
+          <mat-label>Search Cryptocurrency</mat-label>
+          <input
+            type="text"
+            placeholder="Search Cryptocurrency"
+            aria-label="Currency"
+            matInput
+            [formControl]="cryptoData"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete
+            autoActiveFirstOption
+            #auto="matAutocomplete"
+            [displayWith]="displayFn"
+          >
+            @for ( cryptocurrency of filteredOptionsList | async; track
+            cryptocurrency.id ) {
+            <mat-option [value]="cryptocurrency">{{
+              cryptocurrency.name
+            }}</mat-option>
+            }
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Amount</mat-label>
+          <input matInput formControlName="amount" />
+        </mat-form-field>
+      </div>
+      <mat-dialog-actions align="end">
+        <button
+          type="button"
+          class="action-buttons"
+          mat-raised-button
+          mat-dialog-close
+          color="warn"
+          (click)="onCancel()"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="action-buttons"
+          mat-raised-button
+          color="primary"
+          [disabled]="updateCryptoForm.invalid"
+        >
+          Update
+        </button>
+      </mat-dialog-actions>
+    </form>
+  </div>
+</div>

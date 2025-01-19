@@ -1,1 +1,59 @@
-<p>portfolio works!</p>
+<div class="title-wrapper">
+  <h1>Cryptocurrency Portfolio</h1>
+  <!-- <div class="add-button">
+      <button mat-raised-button>Add Cryptocurrency</button>
+    </div> -->
+</div>
+<table mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let crypto">
+      <img
+        class="name-column-image"
+        [src]="crypto.image"
+        width="50"
+        alt="row.symbol"
+      />
+      <span>{{ crypto.name }}</span>
+    </td>
+    <td mat-footer-cell *matFooterCellDef>Total</td>
+  </ng-container>
+  <ng-container matColumnDef="amount">
+    <th mat-header-cell *matHeaderCellDef>Amount</th>
+    <td mat-cell *matCellDef="let crypto">{{ crypto.amount }}</td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+  <ng-container matColumnDef="currentPrice">
+    <th mat-header-cell *matHeaderCellDef>Current Price</th>
+    <td mat-cell *matCellDef="let crypto">$ {{ crypto.currentPrice }}</td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+  <ng-container matColumnDef="totalValue">
+    <th mat-header-cell *matHeaderCellDef>Total Value</th>
+    <td mat-cell *matCellDef="let crypto">
+      {{ crypto.entryTotalValue | currency }}
+    </td>
+    <td mat-footer-cell *matFooterCellDef>{{ getTotalCost() | currency }}</td>
+  </ng-container>
+  <ng-container matColumnDef="update">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let crypto">
+      <button mat-raised-button color="primary" (click)="onUpdate(crypto)">
+        Update
+      </button>
+    </td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let crypto">
+      <button mat-raised-button color="warn" (click)="onDelete(crypto)">
+        Delete
+      </button>
+    </td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+  <tr mat-footer-row *matFooterRowDef="columnsToDisplay"></tr>
+</table>

@@ -1,1 +1,62 @@
-<p>add-currency works!</p>
+<div class="content-wrapper">
+  <div class="title-wrapper">
+    <h1>Add A Cryptocurrency</h1>
+  </div>
+  <div class="add-crypto-card-wrapper">
+    <form [formGroup]="addCryptoForm" (ngSubmit)="onSubmit()">
+      <mat-card>
+        <mat-card-content>
+          <div class="input">
+            <mat-form-field>
+              <mat-label>Search Cryptocurrency</mat-label>
+              <input
+                type="text"
+                placeholder="Search Cryptocurrency"
+                aria-label="Currency"
+                matInput
+                [formControl]="cryptoData"
+                [matAutocomplete]="auto"
+              />
+              <mat-autocomplete
+                autoActiveFirstOption
+                #auto="matAutocomplete"
+                [displayWith]="displayFn"
+              >
+                @for ( cryptocurrency of filteredOptionsList | async; track
+                cryptocurrency.id ) {
+                <mat-option [value]="cryptocurrency">{{
+                  cryptocurrency.name
+                }}</mat-option>
+                }
+              </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Amount</mat-label>
+              <input matInput formControlName="amount" />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button
+            type="button"
+            class="action-buttons"
+            mat-raised-button
+            color="warn"
+            (click)="onCancel()"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="action-buttons"
+            mat-raised-button
+            color="primary"
+            [disabled]="addCryptoForm.invalid"
+          >
+            Add
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>

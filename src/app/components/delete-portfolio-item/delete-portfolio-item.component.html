@@ -1,1 +1,61 @@
-<p>delete-portfolio-item works!</p>
+<mat-dialog-content>
+  <div>
+    <div class="title-wrapper">
+      <h1>Delete Cryptocurrency</h1>
+    </div>
+    <div>
+      <form [formGroup]="deleteCryptoForm" (ngSubmit)="onSubmit()">
+        <div class="input">
+          <mat-form-field>
+            <mat-label>Search Cryptocurrency</mat-label>
+            <input
+              type="text"
+              placeholder="Search Cryptocurrency"
+              aria-label="Currency"
+              matInput
+              [formControl]="cryptoData"
+              [matAutocomplete]="auto"
+            />
+            <mat-autocomplete
+              autoActiveFirstOption
+              #auto="matAutocomplete"
+              [displayWith]="displayFn"
+            >
+              @for ( cryptocurrency of filteredOptionsList | async; track
+              cryptocurrency.id ) {
+              <mat-option [value]="cryptocurrency">{{
+                cryptocurrency.name
+              }}</mat-option>
+              }
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Amount</mat-label>
+            <input matInput formControlName="amount" />
+          </mat-form-field>
+        </div>
+        <span>Are you sure you want to delete {{ cryptoToDelete.name }}?</span>
+        <mat-dialog-actions align="center">
+          <button
+            type="button"
+            class="action-buttons"
+            mat-raised-button
+            mat-dialog-close
+            color="primary"
+            (click)="onCancel()"
+          >
+            No
+          </button>
+          <button
+            type="delete"
+            class="action-buttons"
+            mat-raised-button
+            color="warn"
+          >
+            Yes
+          </button>
+        </mat-dialog-actions>
+      </form>
+    </div>
+  </div>
+</mat-dialog-content>

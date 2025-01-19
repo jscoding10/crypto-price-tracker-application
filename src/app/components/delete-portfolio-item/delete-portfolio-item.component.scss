@@ -1,0 +1,24 @@
+.title-wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.action-buttons {
+  margin-right: 20px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+span {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+}
