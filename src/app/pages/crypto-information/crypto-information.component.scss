@@ -1,0 +1,45 @@
+.image {
+  margin: 10px auto;
+  display: flex;
+  width: 100px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.crypto-info {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.chart-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.chart {
+  width: 90%;
+}
+
+.chart-buttons {
+  width: 100%;
+  display: flex;
+  justify-items: center;
+  justify-content: space-around;
+}
+
+canvas {
+  width: 73%;
+}
