@@ -1,0 +1,81 @@
+.title {
+  height: 40%;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title h1 {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 3.7rem;
+  line-height: 1.2;
+}
+
+.title span {
+  text-transform: capitalize;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  padding-bottom: 19px;
+}
+
+.top-trending-content {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+}
+
+mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.card-wrapper {
+  align-items: center;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+}
+
+mat-card {
+  text-align: center;
+  align-items: center;
+  background: transparent;
+}
+
+.card-image {
+  padding-top: 10px;
+  width: 50px;
+}
+
+.container {
+  padding-bottom: 28px;
+}
+
+.table-container {
+  padding-right: 46px;
+  padding-left: 46px;
+}
+
+td {
+  width: 20%;
+}
+
+th {
+  width: 20%;
+}
+
+.name-column-image {
+  vertical-align: middle;
+  padding: 5px;
+}
