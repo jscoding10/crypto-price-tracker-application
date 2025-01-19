@@ -19,6 +19,12 @@ export class CryptoInformationComponent {
   cryptoData: any;
   cryptoId!: string;
   days: number = 1;
+  lineChartType: ChartType = 'line';
+
+  cryptoService = inject(CryptoService);
+  activatedRoute = inject(ActivatedRoute);
+
+  @ViewChild(BaseChartDirective) myLineChart!: BaseChartDirective;
 
   // Line Chart Data Configuration
   lineChartData: ChartConfiguration['data'] = {
@@ -65,13 +71,6 @@ export class CryptoInformationComponent {
       },
     },
   };
-
-  lineChartType: ChartType = 'line';
-
-  @ViewChild(BaseChartDirective) myLineChart!: BaseChartDirective;
-
-  cryptoService = inject(CryptoService);
-  activatedRoute = inject(ActivatedRoute);
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((data) => {

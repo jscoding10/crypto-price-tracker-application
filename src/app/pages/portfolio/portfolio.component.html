@@ -38,7 +38,12 @@
   <ng-container matColumnDef="update">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let crypto">
-      <button mat-raised-button color="primary" (click)="onUpdate(crypto)">
+      <button
+        mat-raised-button
+        class="primary-button"
+        color="primary"
+        (click)="onUpdate(crypto)"
+      >
         Update
       </button>
     </td>
@@ -47,7 +52,12 @@
   <ng-container matColumnDef="delete">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let crypto">
-      <button mat-raised-button color="warn" (click)="onDelete(crypto)">
+      <button
+        mat-raised-button
+        class="warn-button"
+        color="warn"
+        (click)="onDelete(crypto)"
+      >
         Delete
       </button>
     </td>
